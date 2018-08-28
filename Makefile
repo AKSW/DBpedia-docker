@@ -1,4 +1,5 @@
 DIR=$(shell pwd)
+YEAR ?= 2015-10
 
 # Preparation procedures
 
@@ -7,12 +8,12 @@ download:
 	wget -r -nc -nH --cut-dirs=1 -np -l1 \
 		-A '*.nt.bz2' -A '*.owl' -R '*unredirected*' \
 		-P ./dbpedia \
-		http://downloads.dbpedia.org/2015-10/core/
+		http://downloads.dbpedia.org/$(YEAR)/core/
 	wget -r -nc -nH --cut-dirs=1 -np -l1 \
 		-A '*.ttl.bz2' -A '*.owl' -R '*unredirected*' \
 		-P ./dbpedia \
-		http://downloads.dbpedia.org/2015-10/core-i18n/en/
-	wget -P ./dbpedia/classes http://downloads.dbpedia.org/2015-10/dbpedia_2015-10.owl
+		http://downloads.dbpedia.org/$(YEAR)/core-i18n/en/
+	wget -P ./dbpedia/classes http://downloads.dbpedia.org/$(YEAR)/dbpedia_$(YEAR).owl
 
 # unpacks downloaded files
 unpack:
